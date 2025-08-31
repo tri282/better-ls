@@ -10,7 +10,6 @@
 
 typedef struct {
   char * path;
-  char * name;
   char * extension;
   off_t size;
   time_t mtime;

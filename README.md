@@ -5,7 +5,6 @@ a custom cli-interface that mimics 'ls -al', with some improvements
 better-ls/  
 ├── src/  
 │   ├── main.c  
-│   ├── args.c              # arg parsing  
 │   ├── file.c              # single file ops  
 │   ├── dir.c               # plan: single dir, recursion, filtering, etc  
 │   ├── info.c              # metadata extraction (size, ext, modified time, etc.)  
@@ -13,7 +12,6 @@ better-ls/
 │   └── utils.c             # helpers  
 │  
 ├── include/  
-│   ├── args.h  
 │   ├── file.h  
 │   ├── dir.h  
 │   ├── info.h  
@@ -21,3 +19,9 @@ better-ls/
 │   └── utils.h  
 │  
 ├── Makefile  
+
+## TODO
+- structured spacing  
+- vertical and horizontal printing  
+- more flags  
+- wildcarding?  
