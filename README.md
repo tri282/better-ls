@@ -21,7 +21,10 @@ better-ls/
 ├── Makefile  
 
 ## TODO
+- option to skip/include hidden files  
+- error checking non-existent files  
+
+## Future
 - structured spacing  
-- vertical and horizontal printing  
 - more flags  
 - wildcarding?  
