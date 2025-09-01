@@ -1,13 +1,15 @@
 /*
- * main.c
+ * src/main.c
  */
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <dirent.h>
 
 #include "../include/fileinfo.h"
 #include "../include/print.h"
+#include "../include/dir.h"
 
 #define SUCCESS 0
 #define ERROR -1
@@ -30,7 +32,6 @@ int main(int argc, char ** argv) {
       printf("%s", USAGE);
       return SUCCESS;
     }
-
     else {
       if (num_entries < MAX_ENTRIES) {
         entries[num_entries++] = argv[i];
@@ -42,9 +43,19 @@ int main(int argc, char ** argv) {
     }
   }
 
-  FileInfo * temp = create_fileinfo(entries[0]);
-  print_vertical(temp);
-  destroy_fileinfo(temp);
+  for (int i = 0; i < num_entries; i++) {
+    DIR * dir = opendir(entries[i]);
+
+    if (!dir) {
+      FileInfo * temp = create_fileinfo(entries[i]);
+      print_vertical(temp);
+      destroy_fileinfo(temp);
+    }
+    else {
+      closedir(dir);
+      print_dir(entries[i]);
+    }
+  }
 
   return SUCCESS;
 }
