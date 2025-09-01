@@ -16,7 +16,7 @@ typedef struct {
   int is_dir;
 } FileInfo;
 
-FileInfo *create_fileinfo(const char *filepath);
-void destroy_fileinfo(FileInfo *info);
+FileInfo * create_fileinfo(const char * file_path);
+void destroy_fileinfo(FileInfo * info);
 
 #endif // FILEINFO_H

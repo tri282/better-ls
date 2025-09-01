@@ -1,10 +1,18 @@
+/*
+ * src/print.c
+ */
+
 #include <stdio.h>
 #include <time.h>
 #include "../include/print.h"
 
-void print_vertical(const FileInfo *info) {
+/*
+ * This function takes a FileInfo pointer and prints its metadata to terminal in a verticle manner
+ */
+
+void print_vertical(const FileInfo * info) {
   char timebuf[64];
-  struct tm *tm_info = localtime(&info->mtime);
+  struct tm * tm_info = localtime(&info->mtime);
   strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M:%S", tm_info);
 
   printf("File Info:\n");
@@ -13,19 +21,23 @@ void print_vertical(const FileInfo *info) {
   printf("  Extension : %s\n", info->extension);
   printf("  Size      : %lld bytes\n", (long long)info->size);
   printf("  Modified  : %s\n", timebuf);
-}
+} /* print_verticle */
 
-void print_horizontal(const FileInfo *info) {
+/*
+ * This function takes a FileInfo pointer and prints its metadata to terminal
+ * in a horizontal manner (classic ls -al style)
+ */
+
+void print_horizontal(const FileInfo * info) {
   if (!info) {
     printf("[NULL]\n");
     return;
   }
 
   char timebuf[32];
-  struct tm *tm_info = localtime(&info->mtime);
-  strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M", tm_info);  // Compact
+  struct tm * tm_info = localtime(&info->mtime);
+  strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M", tm_info);
 
-  // Format: type size mod_time ext path
   printf("%-10s %10lld %s %-8s %s\n",
          info->is_dir ? "Directory" : "File",
          (long long)info->size,
@@ -33,4 +45,4 @@ void print_horizontal(const FileInfo *info) {
          info->extension,
          info->path
          );
-}
+} /* print_horizontal */
