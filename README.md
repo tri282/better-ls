@@ -24,6 +24,10 @@ better-ls/
 - option to skip/include hidden files  
 - error checking non-existent files  
 
+## Implementation plan
+- if entry is a dir, populate only 'is_dir' variable, when printing, only print the "header", skip other metadata  
+- make 'parent' as a var for a file entry, when printing horizontally, structurally divide each dir by a new line  
+
 ## Future
 - structured spacing  
 - more flags  

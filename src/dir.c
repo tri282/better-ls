@@ -35,9 +35,11 @@ void print_dir(const char * dirpath) {
     char full_path[MAX_PATH];
     snprintf(full_path, sizeof(full_path), "%s/%s", dirpath, ent->d_name);
 
+    // dont create fileinfo before making sure it is a file
+    // TODO
     FileInfo * info = create_fileinfo(full_path);
     if (!info) {
-      fprintf(stderr, "create_fileinfo for dir entry %s\n", dirpath);
+      fprintf(stderr, "error create_fileinfo for dir entry %s\n", dirpath);
       continue;
     }
 

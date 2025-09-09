@@ -30,29 +30,30 @@ int extract_extension(const char * filepath) {
  */
 
 FileInfo * create_fileinfo(const char * filepath) {
-    struct stat st;
-    if (stat(filepath, &st) != 0) {
-        return NULL;
-    }
+  struct stat st;
+  if (stat(filepath, &st) != 0) {
+    return NULL;
+  }
 
-    FileInfo * info = malloc(sizeof(FileInfo));
-    if (!info) return NULL;
+  // TODO
+  FileInfo * info = malloc(sizeof(FileInfo));
+  if (!info) return NULL;
 
-    info->path = strdup(filepath);
-    info->size = st.st_size;
-    info->mtime = st.st_mtime;
-    info->is_dir = S_ISDIR(st.st_mode);
+  info->path = strdup(filepath);
+  info->size = st.st_size;
+  info->mtime = st.st_mtime;
+  info->is_dir = S_ISDIR(st.st_mode);
 
-    int dot = extract_extension(filepath);
+  int dot = extract_extension(filepath);
 
-    if (dot == DEFAULT_EXT) {
-      info->extension = strdup("none");
-    }
-    else {
-      info->extension = strdup(filepath + dot + 1);
-    }
+  if (dot == DEFAULT_EXT) {
+    info->extension = strdup("none");
+  }
+  else {
+    info->extension = strdup(filepath + dot + 1);
+  }
 
-    return info;
+  return info;
 } /* create_fileinfo */
 
 /*
@@ -60,8 +61,8 @@ FileInfo * create_fileinfo(const char * filepath) {
  */
 
 void destroy_fileinfo(FileInfo *info) {
-    if (!info) return;
-    free(info->path);
-    free(info->extension);
-    free(info);
+  if (!info) return;
+  if (info->path) free(info->path);
+  if (info->extension) free(info->extension);
+  free(info);
 } /* destroy_fileinfo */
