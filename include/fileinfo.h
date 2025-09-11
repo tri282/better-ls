@@ -6,6 +6,7 @@
 #define FILEINFO_H
 
 #include <time.h>
+#include <stdbool.h>
 #include <sys/types.h>
 
 typedef struct {
@@ -14,7 +15,7 @@ typedef struct {
   char * extension;
   off_t size;
   time_t mtime;
-  int is_dir;
+  bool is_dir;
 } FileInfo;
 
 FileInfo * create_fileinfo(const char * file_path);

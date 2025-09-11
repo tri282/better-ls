@@ -40,6 +40,11 @@ FileInfo * create_fileinfo(const char * filepath) {
   if (!info) return NULL;
 
   info->path = strdup(filepath);
+  if (!(info->path)) {
+    free(info);
+    return NULL;
+  }
+
   info->size = st.st_size;
   info->mtime = st.st_mtime;
   info->is_dir = S_ISDIR(st.st_mode);
@@ -51,6 +56,12 @@ FileInfo * create_fileinfo(const char * filepath) {
   }
   else {
     info->extension = strdup(filepath + dot + 1);
+  }
+
+  if (!(info->extension)) {
+    free(info->path);
+    free(info);
+    return NULL;
   }
 
   return info;

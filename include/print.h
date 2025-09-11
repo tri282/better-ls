@@ -7,6 +7,7 @@
 
 #include "../include/fileinfo.h"
 
+void print_dir_header(const FileInfo * info);
 void print_vertical(const FileInfo * info);
 void print_horizontal(const FileInfo * info);
 
