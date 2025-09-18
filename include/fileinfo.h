@@ -10,7 +10,6 @@
 #include <sys/types.h>
 
 typedef struct {
-  // TODO
   char * path;
   char * extension;
   off_t size;

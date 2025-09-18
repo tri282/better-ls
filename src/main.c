@@ -19,10 +19,11 @@
 #define MAX_ENTRIES 5
 
 const char * USAGE =
-  "Usage: bls filename/dirname [options]\n"
-  "Options:\n"
-  "  -h, --help:  Show this help message\n"
-  "  TODO: -s (--sort) [name][size][default:name]\n";
+    "Usage: bls [OPTION]...\n"
+    "List directory contents.\n\n"
+    "Options:\n"
+    "  -a, --all       include hidden files in a directory, overwritten if the entry is a hidden file itself\n"
+    "  -h, --help      display this help again and exit\n";
 
 /*
  * This function prints the header for the output of better-ls
